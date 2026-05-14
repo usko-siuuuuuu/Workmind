@@ -1,0 +1,20 @@
+# Конфигурация с паролями — никогда не коммитить
+.env
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Скачанные вложения из писем (генерируются автоматически)
+app/storage/attachments/
+
+# Тестовые документы (генерируются через generate_test_docs.py)
+app/storage/test_attachments/
+
+# VS Code
+.vscode/
+
+# Виртуальное окружение если будет
+venv/
+.venv/
