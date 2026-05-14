@@ -1,0 +1,9 @@
+python-dotenv
+psycopg2-binary
+neo4j
+aiosmtplib
+imaplib2
+aiogram==3.4.1
+ollama
+asyncio
+httpx

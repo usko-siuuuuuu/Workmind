@@ -1,0 +1,83 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: workmind_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: workmind
+      POSTGRES_PASSWORD: workmind123
+      POSTGRES_DB: workmind
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  neo4j:
+    image: neo4j:5
+    container_name: workmind_neo4j
+    restart: unless-stopped
+    environment:
+      NEO4J_AUTH: neo4j/workmind123
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: workmind_mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+  mailpit-zakazchik:
+    image: axllent/mailpit
+    container_name: workmind_mailpit_zakazchik
+    restart: unless-stopped
+    ports:
+      - "1026:1025"
+      - "8026:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+  mailpit-proekt:
+    image: axllent/mailpit
+    container_name: workmind_mailpit_proekt
+    restart: unless-stopped
+    ports:
+      - "1027:1025"
+      - "8027:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+  mailpit-sub1:
+    image: axllent/mailpit
+    container_name: workmind_mailpit_sub1
+    restart: unless-stopped
+    ports:
+      - "1028:1025"
+      - "8028:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+  mailpit-sub2:
+    image: axllent/mailpit
+    container_name: workmind_mailpit_sub2
+    restart: unless-stopped
+    ports:
+      - "1029:1025"
+      - "8029:8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
+volumes:
+  postgres_data:
+  neo4j_data:
